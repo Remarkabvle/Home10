@@ -1,0 +1,109 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    width: 126px;
+    height: 34px;
+  }
+  
+  .logoImage {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logoText {
+    margin-left: 10px;
+    font-size: 24px;
+    color: #32a852;
+    font-weight: bold;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .navLink {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    line-height: 18.75px;
+    align-items: center;
+    font-weight: 500;
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .mobileMenuIcon {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      background-color: white;
+      padding: 20px;
+    }
+  
+    .nav.navMobile {
+      display: flex;
+    }
+  
+    .mobileMenuIcon {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .icons {
+      display: none;
+    }
+  
+    .navMobile .icons {
+      display: flex;
+    }
+  }
+  
+
+  
+  .header .navLink {
+    position: relative;
+    padding: 0 10px;
+  }
+  
+  .header .wishlistCount {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #32a852;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    display: inline-block;
+    min-width: 21px;
+    text-align: center;
+  }
+  

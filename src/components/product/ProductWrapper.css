@@ -1,0 +1,160 @@
+.icon-card {
+  color: #56b280 !important;
+  font-size: 39px !important;
+  cursor: pointer;
+  transition: transform 0.3s;
+  border: 2px solid #56b280;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.icon-card:hover {
+  transform: scale(1.1);
+}
+
+.icon-card.clicked {
+  animation: flyUp 1s ease forwards;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+.cartMessage {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #56b280;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  z-index: 1000;
+  animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Rest of the CSS remains the same */
+
+.productWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 35px;
+  margin-bottom: 50px !important;
+}
+
+.productCard {
+  width: 250px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.imgContainer {
+  position: relative;
+  max-width: 250px;
+}
+
+.productImage {
+  width: 100%;
+  object-fit: cover;
+  max-height: 200px;
+  background-color: #f7f8fa;
+  padding: 20px;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.imgContainer:hover .productImage {
+  opacity: 0.5;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.imgContainer:hover .overlay {
+  opacity: 1;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.productDescription {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27.6px;
+  color: #1d293f;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+
+.productDetails {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productName {
+  font-size: 14px;
+}
+
+.productPrice {
+  color: #56b280;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 27.6px;
+  padding: 10px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 40px;
+  line-height: 57.6px;
+  color: #0b254b;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 18px;
+  line-height: 27.6px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #5e6e89;
+}

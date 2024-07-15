@@ -1,95 +1,120 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import { useState } from 'react';
+import { FaHome, FaUser, FaStore, FaCog, FaSignOutAlt, FaBars } from 'react-icons/fa';
+import './style.css'
 
 export default function Home() {
+  const [selectedSection, setSelectedSection] = useState('home');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const renderSection = () => {
+    const table = (
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* Jadval qatorlarini qo'shishingiz mumkin */}
+        </tbody>
+      </table>
+    );
+
+    switch (selectedSection) {
+      case 'customer':
+        return (
+          <div>
+            <h1>Customer Page</h1>
+            {table}
+          </div>
+        );
+      case 'seller':
+        return (
+          <div>
+            <h1>Seller Page</h1>
+            {table}
+          </div>
+        );
+      case 'store':
+        return (
+          <div>
+            <h1>Store Page</h1>
+            {table}
+          </div>
+        );
+      case 'settings':
+        return (
+          <div>
+            <h1>Settings Page</h1>
+            {table}
+          </div>
+        );
+      case 'logout':
+        return (
+          <div>
+            <h1>You have been logged out</h1>
+          </div>
+        );
+      default:
+        return (
+          <div>
+            <h1>Welcome to the Dashboard</h1>
+            {table}
+          </div>
+        );
+    }
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <div className="container">
+      <button className="hamburger" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <FaBars />
+      </button>
+      <aside className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
+        <h2>Dashboard</h2>
+        <nav>
+          <ul>
+            <li>
+              <button onClick={() => setSelectedSection('home')}>
+                <FaHome /> Home
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedSection('customer')}>
+                <FaUser /> Customer
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedSection('seller')}>
+                <FaStore /> Seller
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedSection('store')}>
+                <FaStore /> Store
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedSection('settings')}>
+                <FaCog /> Settings
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setSelectedSection('logout')}>
+                <FaSignOutAlt /> Log out
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main className="main">
+        {renderSection()}
+      </main>
+    </div>
   );
 }
